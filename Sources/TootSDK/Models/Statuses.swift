@@ -4,7 +4,7 @@
 import Foundation
 
 /// The policy for posts on the remote host.
-public struct Statuses {
+public struct Statuses: Codable, Equatable, Hashable {
     /// The number of characters a URL is assumed to take up on this instance.
     public let charactersReservedPerURL: Int
     /// The maximum length of a post on this instance, in characters.
@@ -16,5 +16,11 @@ public struct Statuses {
         self.charactersReservedPerURL = charactersReservedPerURL
         self.maxCharacters = maxCharacters
         self.maxMediaAttachments = maxMediaAttachments
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case charactersReservedPerURL = "characters_reserved_per_url"
+        case maxCharacters = "max_characters"
+        case maxMediaAttachments = "max_mediaAttachments"
     }
 }
