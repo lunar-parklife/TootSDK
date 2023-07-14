@@ -5,7 +5,7 @@ import Foundation
 
 /// General information about an instance
 public struct Instance: Codable, Hashable {
-    public init(uri: String? = nil, title: String? = nil, description: String? = nil, shortDescription: String? = nil, email: String? = nil, version: String, languages: [String]? = nil, registrations: Bool? = nil, approvalRequired: Bool? = nil, invitesEnabled: Bool? = nil, urls: Instance.InstanceURLs, stats: Instance.Stats, thumbnail: String? = nil, contactAccount: Account? = nil) {
+    public init(uri: String? = nil, title: String? = nil, description: String? = nil, shortDescription: String? = nil, email: String? = nil, version: String, languages: [String]? = nil, registrations: Bool? = nil, approvalRequired: Bool? = nil, invitesEnabled: Bool? = nil, urls: Instance.InstanceURLs, stats: Instance.Stats, thumbnail: String? = nil, contactAccount: Account? = nil, statuses: Statuses? = nil) {
         self.uri = uri
         self.title = title
         self.description = description
@@ -20,6 +20,7 @@ public struct Instance: Codable, Hashable {
         self.stats = stats
         self.thumbnail = thumbnail
         self.contactAccount = contactAccount
+        self.statuses = statuses
     }
 
     /// The domain name of the instance.
@@ -50,6 +51,8 @@ public struct Instance: Codable, Hashable {
     public var thumbnail: String?
     /// A user that can be contacted, as an alternative to email.
     public var contactAccount: Account?
+    /// Information about what statuses can contain on this instance.
+    public var statuses: Statuses?
 
     public struct InstanceURLs: Codable, Hashable {
         /// Websockets address for push streaming. String (URL).
